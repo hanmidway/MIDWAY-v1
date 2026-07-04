@@ -1,74 +1,72 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>eRTKas</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>eRTKas</title>
 
-    <style>
-        *{
-            margin:0;
-            padding:0;
-            box-sizing:border-box;
-            font-family:Arial,Helvetica,sans-serif;
-        }
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
 
-        body{
-            background:#f3f4f6;
-            display:flex;
-            justify-content:center;
-            align-items:center;
-            min-height:100vh;
-        }
+html,body{
+    width:100%;
+    height:100%;
+    overflow:hidden;
+    font-family:Arial,sans-serif;
+}
 
-        .card{
-            background:#fff;
-            width:400px;
-            padding:30px;
-            border-radius:15px;
-            box-shadow:0 10px 30px rgba(0,0,0,.15);
-            text-align:center;
-        }
+iframe{
+    width:100%;
+    height:100vh;
+    border:none;
+    display:block;
+}
 
-        h1{
-            color:#2563eb;
-            margin-bottom:10px;
-        }
+.loading{
+    position:fixed;
+    inset:0;
+    background:#fff;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+    z-index:9999;
+}
 
-        p{
-            color:#666;
-            margin-bottom:25px;
-        }
+.spinner{
+    width:45px;
+    height:45px;
+    border:5px solid #ddd;
+    border-top:5px solid #1976d2;
+    border-radius:50%;
+    animation:spin .8s linear infinite;
+}
 
-        a{
-            display:inline-block;
-            text-decoration:none;
-            background:#2563eb;
-            color:white;
-            padding:12px 24px;
-            border-radius:8px;
-            transition:.3s;
-        }
+@keyframes spin{
+    to{
+        transform:rotate(360deg);
+    }
+}
+</style>
 
-        a:hover{
-            background:#1d4ed8;
-        }
-    </style>
 </head>
+
 <body>
 
-<div class="card">
-    <h1>🏡 eRTKas</h1>
-
-    <p>
-        Sistem Administrasi dan Keuangan RT 3
-        Gadungankepuh Canden Jetis Bantul
-    </p>
-
-    <a href="https://script.google.com/macros/s/AKfycbzlKERLHTpw1HbpbAM75XgJi63CrynBGmB-Utcw4DCaEWXqsCPsiccy0Xn79XSXaBcu/exec">
-        Buka Aplikasi
-    </a>
+<div class="loading" id="loading">
+    <div class="spinner"></div>
+    <p style="margin-top:15px">Memuat eRTKas...</p>
 </div>
+
+<iframe
+id="app"
+src="https://script.google.com/macros/s/AKfycbzlKERLHTpw1HbpbAM75XgJi63CrynBGmB-Utcw4DCaEWXqsCPsiccy0Xn79XSXaBcu/exec"
+onload="document.getElementById('loading').style.display='none'">
+</iframe>
 
 </body>
 </html>
